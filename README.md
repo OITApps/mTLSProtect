@@ -32,3 +32,6 @@ a.	For example, change any provisioning server passwords stored in your ZTP prof
 3.	Implement Security Best Practices, including Mutual TLS (MTLS) with MAC address Common Name Validation on your provisioning systems, which is the most effective defense against attacks of this nature
 For more information on implementing MTLS with MAC address Common Name Validation, Poly has prepared a white paper that describes in detail the best approach to using MTLS with Poly phones. This has been posted to the Poly support site here: MTLS Best Practices Whitepaper. 
 If you have any questions, please see the Poly Security Center. To report a security issue, please e-mail security@poly.com.
+
+Poly mTLS Best Practices Guide: https://support.polycom.com/content/dam/polycom-support/products/voice/polycom-uc/other-documents/en/2021/ea196390-best-practices-for-mtls.pdf
+Poly certificates white paper: https://support.polycom.com/content/dam/polycom-support/products/voice/polycom-uc/other-documents/en/2010/device-certificates-on-phones-tb37148.pdf
