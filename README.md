@@ -15,6 +15,9 @@ This will copy Poly's certs from their website, into your local folder
 2. ndp_mtls_poly.conf
 Save this file in /etc/apache2.conf.d/
 
+3. Verify that apache will reload without errors with apache2ctl configtest
+4. Reload Apache
+
 ===============================================
 Original Poly notice on 3/16/21
 
