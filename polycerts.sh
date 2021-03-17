@@ -8,3 +8,4 @@ do
     wget ${POLYCOM_PKI}/${CERTFILE} -O ${CERTFILE//%20/_}
     openssl x509 -inform der -in ${CERTFILE//%20/_} -outform pem -out ${DEVICE_CA_DIR}/$(basename -z ${CERTFILE//%20/_} .crt).pem
 done
+/usr/bin/c_rehash ${DEVICE_CA_DIR}
