@@ -35,3 +35,13 @@ If you have any questions, please see the Poly Security Center. To report a secu
 
 Poly mTLS Best Practices Guide: https://support.polycom.com/content/dam/polycom-support/products/voice/polycom-uc/other-documents/en/2021/ea196390-best-practices-for-mtls.pdf
 Poly certificates white paper: https://support.polycom.com/content/dam/polycom-support/products/voice/polycom-uc/other-documents/en/2010/device-certificates-on-phones-tb37148.pdf
+
+--------------
+new notes
+As root, after uploading the file to your endpoints server: mkdir -p /etc/ssl/certs/device_ca && cd /etc/ssl/certs/device_ca && tar -zxvf ~/device_ca.tgz && c_rehash .
+10:25
+I haven’t put the Algo MACs in yet because they didn’t start including a cert in their build process until mid-to-late 2019
+10:26
+(so we’re not enforcing this yet).  That being said, having the CA for them allows them to send a client cert if they have one (they use TLSv1.2, so they will not send a client cert unless they have one matching the list of certificate_authorities sent).
+10:27
+You can test by doing openssl s_client -connect localhost:443 and look for Acceptable client certificate CA names to see what’s listed.
