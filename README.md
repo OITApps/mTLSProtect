@@ -1,7 +1,7 @@
 # mTLSProtect
 mTLS protection for phone configurations
 
-These scripts were authored by Adrian Daminato of net2phone Canada in response to the ZTP breach reported by Poly on 3/16/2021 and according to best practices per https://support.polycom.com/content/dam/polycom-support/products/voice/polycom-uc/other-documents/en/2021/ea196390-best-practices-for-mtls.pdf
+These scripts were provided by our service community in response to the ZTP breach reported by Poly on 3/16/2021 and according to best practices per https://support.polycom.com/content/dam/polycom-support/products/voice/polycom-uc/other-documents/en/2021/ea196390-best-practices-for-mtls.pdf
 The original notice will be posted below.
 
 These files are provided without warranty of any kind and are to be used at your own risk. Do not install them if you do not completely understand what they are doing and are prepared to address any issues that arise.
@@ -13,10 +13,10 @@ Make the file executable with chmod u+x polycerts.sh
 This will copy Poly's certs from their website, into your local folder
 
 2. ndp_mtls_poly.conf
-Save this file in /etc/apache2.conf.d/
+Save this file in /etc/apache2/conf.d/
 
 3. Verify that apache will reload without errors with apache2ctl configtest
-4. Reload Apache
+4. Restart Apache
 
 ===============================================
 Original Poly notice on 3/16/21
