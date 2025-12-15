@@ -61,4 +61,7 @@ And SSLProtocol to
 ```SSLProtocol all -SSLv3```
 You must make your own decisions if this is the right security decision for your deployment.
 * Many Grandstream devices can be moved to the Gen 2 certificate per this guide: https://www.grandstream.com/hubfs/IoT%20Team/Grandstream_Device_Certificate_Update_Guide.pdf   However, this requires a factory reset of the device, and was tempermental in testing.
+* The Grandstream Gen 1 certificate is set to expire June 11, 2027, support for those will likely break after that date
+* Some older grandstream devices do not have a device certificate, or have certificates without the mac address. If you are still supporting those devices, you will not be able to enfore GS mac verfication for grandstream devices. 
+*Testing was done on U20. Please test in an appropriate environment if you are using a different Ubuntu version
 
