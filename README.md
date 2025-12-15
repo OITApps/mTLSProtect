@@ -39,9 +39,29 @@ Poly certificates white paper: https://support.polycom.com/content/dam/polycom-s
 --------------
 new notes
 As root, after uploading the file to your endpoints server: mkdir -p /etc/ssl/certs/device_ca && cd /etc/ssl/certs/device_ca && tar -zxvf ~/device_ca.tgz && c_rehash .
+
 10:25
 I haven’t put the Algo MACs in yet because they didn’t start including a cert in their build process until mid-to-late 2019
 10:26
 (so we’re not enforcing this yet).  That being said, having the CA for them allows them to send a client cert if they have one (they use TLSv1.2, so they will not send a client cert unless they have one matching the list of certificate_authorities sent).
-10:27
+1
+0:27
 You can test by doing openssl s_client -connect localhost:443 and look for Acceptable client certificate CA names to see what’s listed.
+
+Added 12/15/2025
+--------------
+Added certificates and configuration for validating Grandstream devices using mTLS
+Important notes for Grandstream devices:
+* Certificates are provided for both Gen 1 and Gen 2 certificates, but to use the Gen 1 certificate, you will have to lower the security in Apache. This can be done by editing /etc/apache2/mods-enabled/ssl.conf
+Change:
+```SSLCipherSuite HIGH:!aNULL```
+to:
+```SSLCipherSuite DEFAULT@SECLEVEL=0:!aNULL```
+And SSLProtocol to
+```SSLProtocol all -SSLv3```
+You must make your own decisions if this is the right security decision for your deployment.
+* Many Grandstream devices can be moved to the Gen 2 certificate per this guide: https://www.grandstream.com/hubfs/IoT%20Team/Grandstream_Device_Certificate_Update_Guide.pdf   However, this requires a factory reset of the device, and was tempermental in testing.
+* The Grandstream Gen 1 certificate is set to expire June 11, 2027, support for those will likely break after that date
+* Some older grandstream devices do not have a device certificate, or have certificates without the mac address. If you are still supporting those devices, you will not be able to enfore GS mac verfication for grandstream devices. 
+*Testing was done on U20. Please test in an appropriate environment if you are using a different Ubuntu version
+
